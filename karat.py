@@ -20,14 +20,18 @@ def karat(x,y):
 
         return (z2 * 10**(2*m2)) + ((z1 - z2 - z0) * 10**(m2)) + (z0)
 
-def random_with_N_digits(n):
+def randomdigits(n):
     range_start = 10**(n-1)
     range_end = (10**n)-1
     return randint(range_start, range_end)
 
+def mul(x,y):
+	return (x*y)
+
 for x in range(1,1001):
-	number_one = random_with_N_digits(512)
-	number_two = random_with_N_digits(512)
-	print("#",x," \t", number_one,'x', number_two,' = ', karat(number_one,number_two))
+	number_one = randomdigits(512)
+	number_two = randomdigits(512)
+	# print("#",x," \t", number_one,'x', number_two,' = ', karat(number_one,number_two))
+	print("#",x," \t", number_one,'x', number_two,' = ', mul(number_one,number_two))
 
 print("For n = 512")
