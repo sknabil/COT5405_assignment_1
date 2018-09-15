@@ -1,4 +1,4 @@
-# COT5405_assignment_1
+# COT5405 Programming Assignment 1
 ## Collaborators
 - William Myers (wmyers09@gmail.com)
 - Matthew Wadle (matthewwadle@gmail.com)
