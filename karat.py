@@ -1,4 +1,7 @@
 from random import randint
+import time
+import matplotlib.pyplot as plt
+
 
 # Reference: https://stackoverflow.com/questions/42324419/karatsuba-multiplication-implementation
 
@@ -28,10 +31,28 @@ def randomdigits(n):
 def mul(x,y):
 	return (x*y)
 
-for x in range(1,1001):
-	number_one = randomdigits(512)
-	number_two = randomdigits(512)
-	# print("#",x," \t", number_one,'x', number_two,' = ', karat(number_one,number_two))
-	print("#",x," \t", number_one,'x', number_two,' = ', mul(number_one,number_two))
+time_list = []
+for n in [4,8,16,32,64,128,256,512]:
+    start = time.time()
+    for x in range(1,1001):
+    	number_one = randomdigits(n)
+    	number_two = randomdigits(n)
+    	print("#",x," \t", number_one,'x', number_two,' = ', karat(number_one,number_two))
+    	# print("#",x," \t", number_one,'x', number_two,' = ', mul(number_one,number_two))
+    end = time.time()
+    time_list.append([n, end-start])
+    print("For n =", n, "time taken for 100 random inputs:", end-start)
 
-print("For n = 512")
+import numpy as np
+time_list = np.array(time_list)
+print(time_list)
+
+plt.plot(time_list[:, 0],time_list[:, 1],color='green', marker='o', linestyle='dashed',
+        linewidth=2, markersize=12)
+
+
+plt.ylabel('Time taken in seconds')
+plt.xlabel('n')
+plt.title('Karatsuba')
+# plt.title('Mul')
+plt.show()
